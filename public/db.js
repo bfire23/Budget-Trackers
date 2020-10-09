@@ -4,12 +4,12 @@ let db;
 const request = indexedDB.open("budget", 1);
 
 request.onupgradeneeded = function(event) {
-    let db = event.target.results;
+    const db = event.target.result;
     db.createObjectStore("pending", { autoIncrement: true});
 };
 
 request.onsuccess = function(event) {
-    db = event.target.results;
+    db = event.target.result;
 
     if (navigator.online) {
         checkDatabase();
